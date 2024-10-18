@@ -22,7 +22,13 @@ pipeline {
                     // Check changes, drift, and code for UAT
                     bat 'flyway info -environment=UAT'
                     bat 'flyway validate -environment=UAT'  // Check for any issues
-                    bat 'flyway check -changes -drift -dryrun -code -environment=UAT -check.buildEnvironment=Check'  // create Reports
+                    
+                    // Create report for UAT with custom report filename
+                    bat 'flyway check -changes -drift -dryrun -code -environment=UAT -check.buildEnvironment=Check -reportFilename=report_UAT.html'
+                    
+                    // Archive the report for UAT
+                    archiveArtifacts artifacts: 'report_UAT.html', fingerprint: true
+                    
                     input 'Proceed with migration to UAT?'
                     bat 'flyway migrate -environment=UAT'
                 }
@@ -34,7 +40,13 @@ pipeline {
                     // Check changes, drift, and code for Prod
                     bat 'flyway info -environment=Prod'
                     bat 'flyway validate -environment=Prod'  // Check for any issues
-                    bat 'flyway check -changes -drift -dryrun -code -environment=Prod -check.buildEnvironment=Check'  // create Reports
+                    
+                    // Create report for Prod with custom report filename
+                    bat 'flyway check -changes -drift -dryrun -code -environment=Prod -check.buildEnvironment=Check -reportFilename=report_Prod.html'
+                    
+                    // Archive the report for Prod
+                    archiveArtifacts artifacts: 'report_Prod.html', fingerprint: true
+                    
                     input 'Proceed with migration to Prod?'
                     bat 'flyway migrate -environment=Prod'
                 }
