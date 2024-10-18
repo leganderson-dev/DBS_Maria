@@ -33,3 +33,21 @@ url = "jdbc:mysql://127.0.0.1"
 schemas = [ "dbs_1prod" ]
 user = "root"
 password = "${localSecret.Flyway Desktop bce4a4c6-7653-4c9b-bf01-ab727ece922d}"
+
+[environments.Build]
+url = "jdbc:mysql://127.0.0.1"
+schemas = [ "dbs_build" ]
+user = "root"
+password = "${localSecret.Flyway Desktop bce4a4c6-7653-4c9b-bf01-ab727ece922d}"
+
+[environments.UAT]
+url = "jdbc:mysql://127.0.0.1"
+schemas = [ "dbs_uat" ]
+user = "root"
+password = "${localSecret.Flyway Desktop bce4a4c6-7653-4c9b-bf01-ab727ece922d}"
+
+[environments.Check]
+url = "jdbc:mysql://127.0.0.1"
+schemas = [ "dbs_check" ]
+user = "root"
+password = "${localSecret.Flyway Desktop bce4a4c6-7653-4c9b-bf01-ab727ece922d}"
