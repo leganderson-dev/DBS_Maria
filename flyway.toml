@@ -1,0 +1,29 @@
+databaseType = "MariaDb"
+id = "84da83c7-d77c-485d-9940-0705b757978e"
+name = "DBS_Maria_Migrations"
+
+[flyway]
+locations = [ "filesystem:migrations" ]
+mixed = true
+outOfOrder = true
+schemaModelLocation = "schema-model"
+validateMigrationNaming = true
+baselineVersion = "001_20241018131046"
+baselineOnMigrate = true
+
+  [flyway.check]
+  majorTolerance = 0
+
+[flywayDesktop]
+developmentEnvironment = "development"
+schemaModel = "schema-model"
+shadowEnvironment = "shadow"
+
+  [flywayDesktop.generate]
+  undoScripts = true
+
+[redgateCompare]
+filterFile = "filter.rgf"
+
+[redgateCompare.mysql.options.ignores]
+ignoreNewlinesInTextObjects = "off"

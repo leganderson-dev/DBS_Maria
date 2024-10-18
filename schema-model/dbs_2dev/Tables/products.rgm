@@ -1,0 +1,22 @@
+table "dbs_2dev"."products" {
+  columns = (
+    column "ProductID" {
+      type = int(11)
+      null = NOT NULL
+    }
+    column "ProductName" {
+      type = varchar(100)
+    }
+    column "Price" {
+      type = decimal(10,2)
+    }
+  )
+  primaryKey = {
+    columns = [
+      ProductID
+    ]
+    name = "PRIMARY"
+    objectType = primaryKey
+  }
+}
+

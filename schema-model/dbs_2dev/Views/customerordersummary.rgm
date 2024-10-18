@@ -1,0 +1,4 @@
+view "dbs_2dev"."customerordersummary" {
+  text = select `c`.`CustomerID` AS `CustomerID`,`c`.`FirstName` AS `FirstName`,`c`.`LastName` AS `LastName`,sum(`o`.`Amount`) AS `TotalAmount` from (`dbs_2dev`.`customers` `c` join `dbs_2dev`.`orders` `o` on(`c`.`CustomerID` = `o`.`CustomerID`)) group by `c`.`CustomerID`
+}
+

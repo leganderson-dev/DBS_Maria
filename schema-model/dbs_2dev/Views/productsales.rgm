@@ -1,0 +1,4 @@
+view "dbs_2dev"."productsales" {
+  text = select `p`.`ProductID` AS `ProductID`,`p`.`ProductName` AS `ProductName`,sum(`od`.`Quantity`) AS `TotalSold` from (`dbs_2dev`.`products` `p` join `dbs_2dev`.`orderdetails` `od` on(`p`.`ProductID` = `od`.`ProductID`)) group by `p`.`ProductID`
+}
+

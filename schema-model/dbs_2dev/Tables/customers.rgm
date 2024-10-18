@@ -1,0 +1,25 @@
+table "dbs_2dev"."customers" {
+  columns = (
+    column "CustomerID" {
+      type = int(11)
+      null = NOT NULL
+    }
+    column "FirstName" {
+      type = varchar(50)
+    }
+    column "LastName" {
+      type = varchar(50)
+    }
+    column "Email" {
+      type = varchar(100)
+    }
+  )
+  primaryKey = {
+    columns = [
+      CustomerID
+    ]
+    name = "PRIMARY"
+    objectType = primaryKey
+  }
+}
+

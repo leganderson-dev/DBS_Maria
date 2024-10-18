@@ -1,0 +1,69 @@
+table "dbs_2dev"."orderdetails" {
+  columns = (
+    column "OrderDetailID" {
+      type = int(11)
+      null = NOT NULL
+    }
+    column "OrderID" {
+      type = int(11)
+    }
+    column "ProductID" {
+      type = int(11)
+    }
+    column "Quantity" {
+      type = int(11)
+    }
+  )
+  primaryKey = {
+    columns = [
+      OrderDetailID
+    ]
+    name = "PRIMARY"
+    objectType = primaryKey
+  }
+}
+
+foreignKey "dbs_2dev"."orderdetails"."orderdetails_ibfk_1" {
+  columns = [
+    "OrderID"
+  ]
+  referencedTable = "dbs_2dev"."orders"
+  referencedColumns = [
+    "OrderID"
+  ]
+  onUpdate = RESTRICT
+  onDelete = RESTRICT
+}
+
+foreignKey "dbs_2dev"."orderdetails"."orderdetails_ibfk_2" {
+  columns = [
+    "ProductID"
+  ]
+  referencedTable = "dbs_2dev"."products"
+  referencedColumns = [
+    "ProductID"
+  ]
+  onUpdate = RESTRICT
+  onDelete = RESTRICT
+}
+
+index "dbs_2dev"."orderdetails"."OrderID" {
+  columns = <
+    {
+      name = OrderID
+    }
+
+  >
+  type = BTREE
+}
+
+index "dbs_2dev"."orderdetails"."ProductID" {
+  columns = <
+    {
+      name = ProductID
+    }
+
+  >
+  type = BTREE
+}
+

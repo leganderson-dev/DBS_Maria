@@ -1,0 +1,28 @@
+procedure "dbs_2dev"."AddEmployee" {
+  parameters = <
+    {
+      name = fname
+      datatype = varchar(50)
+      mode = IN
+    }
+
+    {
+      name = lname
+      datatype = varchar(50)
+      mode = IN
+    }
+
+    {
+      name = position
+      datatype = varchar(50)
+      mode = IN
+    }
+
+  >
+  text = """-
+BEGIN
+    INSERT INTO Employees (FirstName, LastName, Position) VALUES (fname, lname, position);
+END
+"""
+}
+

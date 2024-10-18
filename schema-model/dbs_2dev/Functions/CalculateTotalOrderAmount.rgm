@@ -1,0 +1,21 @@
+function "dbs_2dev"."CalculateTotalOrderAmount" {
+  returnType = decimal(10,2)
+  parameters = <
+    {
+      name = order_id
+      datatype = int(11)
+    }
+
+  >
+  text = """-
+BEGIN
+    DECLARE total DECIMAL(10,2);
+    SELECT SUM(p.Price * od.Quantity) INTO total
+    FROM OrderDetails od
+    JOIN Products p ON od.ProductID = p.ProductID
+    WHERE od.OrderID = order_id;
+    RETURN total;
+END
+"""
+}
+

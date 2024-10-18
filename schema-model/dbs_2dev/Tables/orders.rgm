@@ -1,0 +1,47 @@
+table "dbs_2dev"."orders" {
+  columns = (
+    column "OrderID" {
+      type = int(11)
+      null = NOT NULL
+    }
+    column "OrderDate" {
+      type = date
+    }
+    column "CustomerID" {
+      type = int(11)
+    }
+    column "Amount" {
+      type = decimal(10,2)
+    }
+  )
+  primaryKey = {
+    columns = [
+      OrderID
+    ]
+    name = "PRIMARY"
+    objectType = primaryKey
+  }
+}
+
+foreignKey "dbs_2dev"."orders"."orders_ibfk_1" {
+  columns = [
+    "CustomerID"
+  ]
+  referencedTable = "dbs_2dev"."customers"
+  referencedColumns = [
+    "CustomerID"
+  ]
+  onUpdate = RESTRICT
+  onDelete = RESTRICT
+}
+
+index "dbs_2dev"."orders"."CustomerID" {
+  columns = <
+    {
+      name = CustomerID
+    }
+
+  >
+  type = BTREE
+}
+

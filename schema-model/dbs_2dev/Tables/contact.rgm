@@ -1,0 +1,14 @@
+table "dbs_2dev"."contact" {
+  columns = (
+    column "Name" {
+      type = int(11)
+    }
+    column "id" {
+      type = int(11)
+    }
+    column "address" {
+      type = int(11)
+    }
+  )
+}
+
