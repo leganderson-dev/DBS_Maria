@@ -10,7 +10,7 @@ pipeline {
         stage('Flyway Info') {
             steps {
                 // Run the Flyway command in the context of the checked-out code
-                bat 'flyway info -url=jdbc:mysql://127.0.0.1 -schemas=dbs_1prod -user=root -password=Redg@te1'
+                bat 'flyway info -environment=prod'
             }
         }
     }
