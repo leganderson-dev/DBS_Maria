@@ -25,7 +25,7 @@ pipeline {
                 script {
                     // INFO and VALIDATE
                     bat label: 'Status of UAT migrations', script: 'flyway info -environment=UAT'
-                    bat label: 'Validate script Integrity', script: 'flyway validate -environment=UAT -ignoreMigrationPatterns='*:pending''  // Check for any issues
+                    bat label: 'Validate script Integrity', script: 'flyway validate -environment=UAT -ignoreMigrationPatterns="*:pending"'  // Check for any issues
                     
                     // Create report for UAT
                     bat label: 'Create Change, Drift, Code Analysis and DryRun Reports', script: 'flyway check -changes -drift -dryrun -code -environment=UAT -check.buildEnvironment=Check -reportFilename=report_UAT.html'
@@ -43,7 +43,7 @@ pipeline {
                 script {
                     // Check changes, drift, and code for Prod
                     bat label: 'Status of Prod migrations', script: 'flyway info -environment=prod'
-                    bat label: 'Validate script Integrity', script: 'flyway validate -environment=prod -ignoreMigrationPatterns='*:pending''  // Check for any issues
+                    bat label: 'Validate script Integrity', script: 'flyway validate -environment=prod -ignoreMigrationPatterns="*:pending"'  // Check for any issues
                     
                     // Create report for Prod with custom report filename
                     bat label: 'Create Change, Drift, Code Analysis and DryRun Reports', script: 'flyway check -changes -drift -dryrun -code -environment=prod -check.buildEnvironment=Check -reportFilename=report_Prod.html'
