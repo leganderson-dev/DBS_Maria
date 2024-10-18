@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     // Clean, migrate, and undo for Build environment
-                    bat 'flyway clean -environment=Build'
+                    bat 'flyway clean -environment=Build -cleanDisabled=False'
                     bat 'flyway migrate -environment=Build'
                     bat 'flyway undo -environment=Build'
                 }
