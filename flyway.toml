@@ -31,3 +31,5 @@ ignoreNewlinesInTextObjects = "off"
 [environments.prod]
 url = "jdbc:mysql://127.0.0.1"
 schemas = [ "dbs_1prod" ]
+user = "root"
+password = "${localSecret.Flyway Desktop bce4a4c6-7653-4c9b-bf01-ab727ece922d}"
