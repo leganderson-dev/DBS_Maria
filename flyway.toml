@@ -27,3 +27,7 @@ filterFile = "filter.rgf"
 
 [redgateCompare.mysql.options.ignores]
 ignoreNewlinesInTextObjects = "off"
+
+[environments.prod]
+url = "jdbc:mysql://127.0.0.1"
+schemas = [ "dbs_1prod" ]
