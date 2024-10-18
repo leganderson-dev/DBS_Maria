@@ -42,17 +42,17 @@ pipeline {
             steps {
                 script {
                     // Check changes, drift, and code for Prod
-                    bat label: 'Status of Prod migrations', script: 'flyway info -environment=Prod'
-                    bat label: 'Validate script Integrity', script: 'flyway validate -environment=Prod'  // Check for any issues
+                    bat label: 'Status of Prod migrations', script: 'flyway info -environment=prod'
+                    bat label: 'Validate script Integrity', script: 'flyway validate -environment=prod'  // Check for any issues
                     
                     // Create report for Prod with custom report filename
-                    bat label: 'Create Change, Drift, Code Analysis and DryRun Reports', script: 'flyway check -changes -drift -dryrun -code -environment=Prod -check.buildEnvironment=Check -reportFilename=report_Prod.html'
+                    bat label: 'Create Change, Drift, Code Analysis and DryRun Reports', script: 'flyway check -changes -drift -dryrun -code -environment=prod -check.buildEnvironment=Check -reportFilename=report_Prod.html'
                     
                     // Archive the report for Prod
                     archiveArtifacts artifacts: 'report_Prod.html', fingerprint: true
                     
                     input 'Proceed with migration to Prod?'
-                    bat label: 'Migrate Pending Scripts to Prod', script: 'flyway info migrate info -environment=Prod'
+                    bat label: 'Migrate Pending Scripts to Prod', script: 'flyway info migrate info -environment=prod'
                 }
             }
         }
