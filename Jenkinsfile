@@ -10,9 +10,14 @@ pipeline {
             steps {
                 script {
                     // Clean, migrate, and undo for Build environment
+                    echo 'Pre Build Validation Clean'
                     bat 'flyway clean -environment=Build -cleanDisabled=False'
+
+                    echo 'Build Migration Sctipts Validation'
                     bat 'flyway migrate -environment=Build'
-                    bat 'flyway undo -environment=Build'
+
+                    echo 'Pre Rollback Scripts Validation Clean'
+                    bat 'flyway undo -environment=Build -target="002_20241018021811"'
                 }
             }
         }
