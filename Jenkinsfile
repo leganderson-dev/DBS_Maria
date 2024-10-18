@@ -13,10 +13,10 @@ pipeline {
                     bat label: 'Pre Build Validation Clean', script: 'flyway clean -environment=Build -cleanDisabled=False'
                     
                     // Migrate BUILD
-                    bat label: 'Validate Migration Scripts', script: 'flyway migrate -environment=Build'
+                    bat label: 'Validate Migration Scripts', script: 'flyway info migrate info -environment=Build'
                     
                     // Undo BUILD
-                    bat label: 'Validate Undo Scripts', script: 'flyway undo -environment=Build -target="002.20241018021811"'
+                    bat label: 'Validate Undo Scripts', script: 'flyway info undo info -environment=Build -target="002.20241018021811"'
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline {
                     archiveArtifacts artifacts: 'report_UAT.html', fingerprint: true
                     
                     input 'Proceed with migration to UAT?'
-                    bat label: 'Migrate Pending Scripts to UAT', script: 'flyway migrate -environment=UAT'
+                    bat label: 'Migrate Pending Scripts to UAT', script: 'flyway info migrate info -environment=UAT'
                 }
             }
         }
@@ -52,7 +52,7 @@ pipeline {
                     archiveArtifacts artifacts: 'report_Prod.html', fingerprint: true
                     
                     input 'Proceed with migration to Prod?'
-                    bat label: 'Migrate Pending Scripts to Prod', script: 'flyway migrate -environment=Prod'
+                    bat label: 'Migrate Pending Scripts to Prod', script: 'flyway info migrate info -environment=Prod'
                 }
             }
         }
