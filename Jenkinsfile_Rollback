@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    stages {
+        stage('Rollback UAT Environment') {
+            steps {
+                script {
+                    // Rollback command for UAT
+                    bat label: 'Rollback UAT', script: 'flyway undo -environment=UAT'
+                }
+            }
+        }
+        stage('Rollback Prod Environment') {
+            steps {
+                script {
+                    // Rollback command for Prod
+                    bat label: 'Rollback Prod', script: 'flyway undo -environment=Prod'
+                }
+            }
+        }
+    }
+}
