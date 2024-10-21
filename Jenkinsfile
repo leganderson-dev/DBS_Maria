@@ -65,21 +65,3 @@ pipeline {
         }
     }
 }
-
-// After the main pipeline stages, we define rollback options
-stage('Rollback Options') {
-    steps {
-        script {
-            // This block can be executed after the main pipeline
-            def rollBackUAT = input(message: 'Would you like to rollback UAT?', parameters: [[$class: 'BooleanParameterDefinition', name: 'Rollback UAT', defaultValue: false]])
-            if (rollBackUAT) {
-                bat label: 'Rollback UAT Migration', script: 'flyway undo -environment=UAT'
-            }
-            
-            def rollBackProd = input(message: 'Would you like to rollback Prod?', parameters: [[$class: 'BooleanParameterDefinition', name: 'Rollback Prod', defaultValue: false]])
-            if (rollBackProd) {
-                bat label: 'Rollback Prod Migration', script: 'flyway undo -environment=Prod'
-            }
-        }
-    }
-}
