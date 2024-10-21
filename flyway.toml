@@ -10,7 +10,6 @@ schemaModelLocation = "schema-model"
 validateMigrationNaming = true
 baselineVersion = "001_20241018131046"
 baselineOnMigrate = true
-publishResult=true
 
   [flyway.check]
   majorTolerance = 0
