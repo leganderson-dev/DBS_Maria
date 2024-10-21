@@ -56,25 +56,26 @@ pipeline {
                 }
             }
         }
-        // Rollback stages now included in the same stages block but will be after the main flow
-        stage('Rollback Steps') {
-            parallel {
-                stage('Rollback UAT') {
-                    steps {
-                        script {
-                            input 'Proceed with rollback to UAT?'
-                            bat label: 'Rollback UAT Migration', script: 'flyway undo -environment=UAT'
-                        }
-                    }
+        // Rollback steps as standalone stages
+        stage('Rollback UAT') {
+            steps {
+                script {
+                    echo 'To rollback UAT, run the following command: flyway undo -environment=UAT'
                 }
-                stage('Rollback Prod') {
-                    steps {
-                        script {
-                            input 'Proceed with rollback to Prod?'
-                            bat label: 'Rollback Prod Migration', script: 'flyway undo -environment=Prod'
-                        }
-                    }
+            }
+        }
+        stage('Rollback Prod') {
+            steps {
+                script {
+                    echo 'To rollback Prod, run the following command: flyway undo -environment=Prod'
                 }
+            }
+        }
+    }
+    post {
+        always {
+            script {
+                echo 'The pipeline has finished executing. Rollback steps are available to execute if needed.'
             }
         }
     }
