@@ -9,6 +9,9 @@ table "dbs_2dev"."contact" {
     column "address" {
       type = int(11)
     }
+    column "Old_Col" {
+      type = int(11)
+    }
   )
 }
 
