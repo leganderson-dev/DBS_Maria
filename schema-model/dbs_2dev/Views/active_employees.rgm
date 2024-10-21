@@ -1,4 +1,4 @@
 view "dbs_2dev"."active_employees" {
-  text = select `employees`.`EmployeeID` AS `EmployeeID`,`employees`.`FirstName` AS `FirstName`,`employees`.`LastName` AS `LastName`,`employees`.`Position` AS `Position` from `employees`
+  text = select `dbs_2dev`.`employees`.`EmployeeID` AS `EmployeeID`,`dbs_2dev`.`employees`.`FirstName` AS `FirstName`,`dbs_2dev`.`employees`.`LastName` AS `LastName`,`dbs_2dev`.`employees`.`Position` AS `Position` from `dbs_2dev`.`employees`
 }
 

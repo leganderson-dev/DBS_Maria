@@ -34,7 +34,7 @@ pipeline {
                     archiveArtifacts artifacts: 'report_UAT.html', fingerprint: true
                     
                     input 'Proceed with migration to UAT?'
-                    bat label: 'Migrate Pending Scripts to UAT', script: 'flyway info migrate info -environment=UAT'
+                    bat label: 'Migrate Pending Scripts to UAT', script: 'flyway info migrate info -environment=UAT -publishResult=true'
                 }
             }
         }
@@ -52,7 +52,7 @@ pipeline {
                     archiveArtifacts artifacts: 'report_Prod.html', fingerprint: true
                     
                     input 'Proceed with migration to Prod?'
-                    bat label: 'Migrate Pending Scripts to Prod', script: 'flyway info migrate info -environment=prod'
+                    bat label: 'Migrate Pending Scripts to Prod', script: 'flyway info migrate info -environment=prod -publishResult=true'
                 }
             }
         }
