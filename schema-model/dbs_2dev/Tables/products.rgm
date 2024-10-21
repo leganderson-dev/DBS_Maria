@@ -10,9 +10,6 @@ table "dbs_2dev"."products" {
     column "Price" {
       type = decimal(10,2)
     }
-    column "Date" {
-      type = int(11)
-    }
   )
   primaryKey = {
     columns = [
