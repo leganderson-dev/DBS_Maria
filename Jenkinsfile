@@ -80,14 +80,3 @@ pipeline {
         }
     }
 }
-
-// New Rollback stages
-stage('Rollback Steps') {
-    steps {
-        script {
-            // Instructions for manual rollback execution
-            echo 'To rollback UAT, run the following command: flyway undo -environment=UAT'
-            echo 'To rollback Prod, run the following command: flyway undo -environment=Prod'
-        }
-    }
-}
