@@ -56,21 +56,26 @@ pipeline {
                 }
             }
         }
-        // New Rollback stage for UAT
-        stage('Rollback UAT') {
-            steps {
-                script {
-                    input 'Proceed with rollback to UAT?'
-                    bat label: 'Rollback UAT Migration', script: 'flyway undo -environment=UAT'
+    }
+    // Rollback stages are now outside the main sequential flow
+    stages {
+        stage('Rollback Steps') {
+            parallel {
+                stage('Rollback UAT') {
+                    steps {
+                        script {
+                            input 'Proceed with rollback to UAT?'
+                            bat label: 'Rollback UAT Migration', script: 'flyway undo -environment=UAT'
+                        }
+                    }
                 }
-            }
-        }
-        // New Rollback stage for Prod
-        stage('Rollback Prod') {
-            steps {
-                script {
-                    input 'Proceed with rollback to Prod?'
-                    bat label: 'Rollback Prod Migration', script: 'flyway undo -environment=Prod'
+                stage('Rollback Prod') {
+                    steps {
+                        script {
+                            input 'Proceed with rollback to Prod?'
+                            bat label: 'Rollback Prod Migration', script: 'flyway undo -environment=Prod'
+                        }
+                    }
                 }
             }
         }
