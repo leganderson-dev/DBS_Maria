@@ -56,9 +56,7 @@ pipeline {
                 }
             }
         }
-    }
-    // Rollback stages are now outside the main sequential flow
-    stages {
+        // Rollback stages now included in the same stages block but will be after the main flow
         stage('Rollback Steps') {
             parallel {
                 stage('Rollback UAT') {
