@@ -62,5 +62,7 @@ displayName = "Development database"
 [environments.shadow]
 url = "jdbc:mysql://127.0.0.1"
 schemas = [ "shadow" ]
+user = "root"
+password = "${localSecret.Flyway Desktop bce4a4c6-7653-4c9b-bf01-ab727ece922d}"
 displayName = "Shadow database"
 provisioner = "clean"
