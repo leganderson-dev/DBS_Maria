@@ -13,6 +13,9 @@ table "dbs_2dev"."employees" {
     column "Position" {
       type = varchar(50)
     }
+    column "LastModBy" {
+      type = date
+    }
   )
   primaryKey = {
     columns = [
