@@ -13,6 +13,7 @@ baselineOnMigrate = true
 
   [flyway.check]
   majorTolerance = 0
+  buildEnvironment = "Check"
 
 [flywayDesktop]
 developmentEnvironment = "development"
