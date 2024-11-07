@@ -11,6 +11,7 @@ procedure "dbs_2dev"."GetCustomerOrders" {
 BEGIN
     SELECT o.OrderID, o.OrderDate, o.Amount
     FROM Orders o
+    -- comment
     WHERE o.CustomerID = cust_id;
 END
 """
